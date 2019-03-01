@@ -11,7 +11,7 @@ import ValidationPage from "./Pages/ValidationPage";
 import PasswordForgotPage from "./Pages/PasswordForgotPage";
 import PasswordPage from "./Pages/PasswordPage";
 import { PrivatePage } from "./Pages/PrivatePage";
-import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom";
+import { HashRouter as Router, Route, Link, Redirect } from "react-router-dom";
 
 import "./styles.css";
 
