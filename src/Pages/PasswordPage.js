@@ -3,7 +3,7 @@ import { Button, FormGroup, FormControl, FormLabel, Container, Row, Col, Card } 
 import ValidIcon from "../Views/ValidIcon";
 import queryString from "query-string";
 
-import "../../public/css/Login.css";
+import "../Login.css";
 
 export default class PasswordPage extends Component {
     constructor(props) {
