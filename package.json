@@ -24,6 +24,6 @@
         "predeploy": "npm run build",
         "deploy": "gh-pages -d build"
     },
-    "homepage": "http://gadgetsan.github.io/IDK-do_Frontend",
+    "homepage": "https://gadgetsan.github.io/IDK-do_Frontend",
     "browserslist": [">0.2%", "not dead", "not ie <= 11", "not op_mini all"]
 }

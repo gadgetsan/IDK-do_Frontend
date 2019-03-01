@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import LoginPage from "./Pages/LoginPage";
 import HelloUserPage from "./Pages/HelloUserPage";
+import LandingPage from "./Pages/LandingPage";
 import ListPage from "./Pages/ListPage";
 import SharesPage from "./Pages/SharesPage";
 import DisconnectPage from "./Pages/DisconnectPage";
@@ -19,6 +20,7 @@ function App() {
         <Router basename={process.env.PUBLIC_URL}>
             <div>
                 <PrivatePage path="/hello" exact component={HelloUserPage} />
+                <Route path="/" exact component={LandingPage} />
                 <Route path="/login" exact component={LoginPage} />
                 <Route path="/register" exact component={RegisterPage} />
                 <Route path="/Validation" exact component={ValidationPage} />
