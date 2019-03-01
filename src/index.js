@@ -16,7 +16,7 @@ import "./styles.css";
 
 function App() {
     return (
-        <Router>
+        <Router basename={process.env.PUBLIC_URL}>
             <div>
                 <PrivatePage path="/hello" exact component={HelloUserPage} />
                 <Route path="/login" exact component={LoginPage} />
