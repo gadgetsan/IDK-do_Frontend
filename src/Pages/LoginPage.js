@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Button, FormGroup, FormControl, FormLabel, Container, Row, Col, Card } from "react-bootstrap";
+import helpers from "../helpers";
+import { Link } from "react-router-dom";
 
 import "../Login.css";
 
@@ -34,7 +36,7 @@ export default class Login extends Component {
     handleSubmit = event => {
         event.preventDefault();
         window
-            .fetch("https://6jnnzjwmkk.sse.codesandbox.io/api/login", {
+            .fetch(helpers.apiURL + "/api/login", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email: this.state.email, password: this.state.password })
@@ -88,16 +90,16 @@ export default class Login extends Component {
                                             Connexion
                                         </Button>
                                     </form>
-                                    <a className="btn btn-link btn-danger pull-right" href="/ForgotPassword">
+                                    <Link className="btn btn-link btn-danger pull-right" to="/ForgotPassword">
                                         J'ai oublié mon mot de passe
-                                    </a>
+                                    </Link>
                                 </div>
                             </Card.Body>
                             <Card.Footer>
                                 <div className="text-center">
-                                    <a className="btn btn-link btn-primary text-center" href="/register">
+                                    <Link className="btn btn-link btn-primary text-center" to="/register">
                                         Créer un compte
-                                    </a>
+                                    </Link>
                                 </div>
                             </Card.Footer>
                         </Card>

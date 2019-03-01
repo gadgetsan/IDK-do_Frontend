@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Button, FormGroup, FormControl, FormLabel, Container, Row, Col, Card } from "react-bootstrap";
+import helpers from "../helpers";
 import ValidIcon from "../Views/ValidIcon";
 import queryString from "query-string";
 
@@ -34,7 +35,7 @@ export default class PasswordPage extends Component {
         event.preventDefault();
         console.dir(this.state);
         window
-            .fetch("https://6jnnzjwmkk.sse.codesandbox.io/api/pwChange", {
+            .fetch(helpers.apiURL + "/api/pwChange", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ password: this.state.password, key: this.state.key })

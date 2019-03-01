@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Button, FormGroup, FormControl, FormLabel, Container, Row, Col, Card } from "react-bootstrap";
+import helpers from "../helpers";
 import ValidIcon from "../Views/ValidIcon";
 
 import "../Login.css";
@@ -45,7 +46,7 @@ export default class Login extends Component {
     handleSubmit = event => {
         event.preventDefault();
         window
-            .fetch("https://6jnnzjwmkk.sse.codesandbox.io/api/register", {
+            .fetch(helpers.apiURL + "/api/register", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email: this.state.email, password: this.state.password, name: this.state.name })
