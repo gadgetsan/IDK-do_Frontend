@@ -61,7 +61,7 @@ export default class SharedWithMeIdeasContainer extends Component {
                                     </thead>
                                     <tbody>
                                         {this.state.ideas.map(idea => (
-                                            <SharedIdeaLineView idea={idea} key={idea.rowid} />
+                                            <SharedIdeaLineView idea={idea} key={idea.rowid} listOwner={this.props.selectedRowId} />
                                         ))}
                                     </tbody>
                                 </table>

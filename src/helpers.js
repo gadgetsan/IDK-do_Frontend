@@ -13,7 +13,7 @@ module.exports.fetchHelper = (location, callback) => {
     module.exports.fetchHelperWithData(location, {}, callback);
 };
 
-module.exports.apiURL = "https://idk-do.appspot.com/";
+module.exports.apiURL = "https://2pl3rqowrj.sse.codesandbox.io"; //"https://idk-do.appspot.com/";
 
 module.exports.apiGet = (location, header, data, callback) => {
     fetch(module.exports.apiURL + "/api/" + location + module.exports.jsonToQueryString(data), {

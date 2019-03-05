@@ -31,9 +31,10 @@ export default class MarkAsBoughtModalContainer extends Component {
         event.preventDefault();
         var self = this;
         this.setState({ loading: true });
-        var ideaToDelete = { rowid: this.props.idea.rowid };
+        var ideaToDelete = { rowid: this.props.idea.rowid, owner: this.props.owner };
         helpers.postHelper("boughtItem", ideaToDelete, result => {
             this.setState({ loading: false });
+            this.props.bought();
             this.handleClose();
             //self.props.deleteIdea(this.props.idea.rowid);
         });
