@@ -10,6 +10,7 @@ import RegisterPage from "./Pages/RegisterPage";
 import ValidationPage from "./Pages/ValidationPage";
 import PasswordForgotPage from "./Pages/PasswordForgotPage";
 import PasswordPage from "./Pages/PasswordPage";
+import ExperimentsPage from "./Pages/ExperimentsPage";
 import { PrivatePage } from "./Pages/PrivatePage";
 import { HashRouter as Router, Route, Link, Redirect } from "react-router-dom";
 
@@ -26,6 +27,7 @@ function App() {
                 <Route path="/Validation" exact component={ValidationPage} />
                 <Route path="/ForgotPassword" exact component={PasswordForgotPage} />
                 <Route path="/Password" exact component={PasswordPage} />
+                <Route path="/Experiments" exact component={ExperimentsPage} />
                 <PrivatePage path="/list" exact component={ListPage} />
                 <PrivatePage path="/sharedWithMe" exact component={SharesPage} />
                 <PrivatePage path="/disconnect" exact component={DisconnectPage} />
