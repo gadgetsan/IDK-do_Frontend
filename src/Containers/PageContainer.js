@@ -7,7 +7,9 @@ export default function PageContainer(props) {
         <>
             <Navbar bg="light" expand="lg">
                 <LinkContainer to="/hello">
-                    <Navbar.Brand>Logiciel d'échange</Navbar.Brand>
+                    <Navbar.Brand>
+                        <b>IDK-do</b> <small>(Idée Cadeau)</small>
+                    </Navbar.Brand>
                 </LinkContainer>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
@@ -17,9 +19,6 @@ export default function PageContainer(props) {
                         </LinkContainer>
                         <LinkContainer to="/sharedWithMe">
                             <Nav.Link>partagées avec moi</Nav.Link>
-                        </LinkContainer>
-                        <LinkContainer to="/history">
-                            <Nav.Link>Historique</Nav.Link>
                         </LinkContainer>
                     </Nav>
                     <Nav pullright="true">

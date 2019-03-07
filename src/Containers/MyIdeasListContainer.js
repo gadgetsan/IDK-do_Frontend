@@ -24,7 +24,7 @@ export default class MyIdeasListContainer extends Component {
                 ideas: ideasList,
                 isLoading: false
             });
-            console.log(ideasList);
+            //console.log(ideasList);
         });
     }
 
