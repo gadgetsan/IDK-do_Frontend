@@ -43,10 +43,10 @@ export default class MarkAsBoughtModalContainer extends Component {
     render() {
         return (
             <>
-                <button type="button" title="" className="btn btn-info btn-link btn-sm" data-original-title="Remove" onClick={this.handleShow}>
+                <a title="Marquer cette idée comme achetée" className="text-info" data-original-title="Remove" onClick={this.handleShow}>
                     <i className="material-icons">strikethrough_s</i>
                     <div className="ripple-container" />
-                </button>
+                </a>
 
                 <Modal show={this.state.show} onHide={this.handleClose}>
                     <Modal.Header closeButton>

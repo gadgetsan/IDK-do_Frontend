@@ -43,10 +43,10 @@ export default class DeleteIdeaModalContainer extends Component {
     render() {
         return (
             <>
-                <button type="button" title="" className="btn btn-danger btn-link btn-sm" data-original-title="Remove" onClick={this.handleShow}>
+                <a title="Supprimer cette idée" className="text-danger" data-original-title="Remove" onClick={this.handleShow}>
                     <i className="material-icons">close</i>
                     <div className="ripple-container" />
-                </button>
+                </a>
 
                 <Modal show={this.state.show} onHide={this.handleClose}>
                     <Modal.Header closeButton>

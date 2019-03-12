@@ -67,19 +67,11 @@ export default class MyIdeasListContainer extends Component {
             return (
                 <Card>
                     <Card.Header className="card-header-primary">
-                        <h4 className="card-title">Liste d'idées</h4>
-                        <p className="card-category">Liste d'idées</p>
+                        <h4 className="card-title">Mes Idées</h4>
                     </Card.Header>
                     <Card.Body>
                         <div className="table-responsive">
-                            <table className="table">
-                                <thead className=" text-primary">
-                                    <tr>
-                                        <th>Nom</th>
-                                        <th>Description</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </thead>
+                            <table className="table item-table">
                                 <tbody>
                                     {this.state.ideas.map(idea => (
                                         <IdeaLineView idea={idea} key={idea.rowid} deleteIdea={this.deleteIdea} />

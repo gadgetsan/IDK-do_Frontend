@@ -21,41 +21,35 @@ export default class SharedIdeaLineView extends Component {
     render() {
         if (this.props.idea.boughtOn || this.state.forceBought) {
             return (
-                <tr>
-                    <td>
-                        <s>
-                            <strong>
-                                {this.props.idea.link ? (
-                                    <a href={this.props.idea.link} className="text-gray">
-                                        {this.props.idea.name}
-                                    </a>
-                                ) : (
-                                    <span className="text-gray">{this.props.idea.name}</span>
-                                )}
-                            </strong>
-                        </s>
-                    </td>
-                    <td>
-                        <s className="text-gray">{this.props.idea.description}</s>
-                    </td>
-                    <td>
-                        <small className="text-gray">
-                            Acheté <b>{/*<UserContainer id={props.idea.boughtUser} />*/}</b>
-                        </small>
+                <tr className="list-line">
+                    <td className="list-item">
+                        <div className="list-item-container bought">
+                            <span className="list-item-title">
+                                {this.props.idea.link ? <a href={this.props.idea.link}>{this.props.idea.name}</a> : <span>{this.props.idea.name}</span>}
+                            </span>
+                            {this.props.idea.description ? " - " : ""}
+                            <small>{this.props.idea.description}</small>
+                            <div className="list-actionBox">
+                                <a href="#">Acheté</a>
+                            </div>
+                        </div>
                     </td>
                 </tr>
             );
         } else {
             return (
-                <tr>
-                    <td>
-                        <strong>
-                            {this.props.idea.link ? <a href={this.props.idea.link}>{this.props.idea.name}</a> : <span>{this.props.idea.name}</span>}
-                        </strong>
-                    </td>
-                    <td>{this.props.idea.description}</td>
-                    <td>
-                        <MarkAsBoughtModalContainer idea={this.props.idea} owner={this.props.listOwner} bought={this.bought} />
+                <tr className="list-line">
+                    <td className="list-item">
+                        <div className="list-item-container">
+                            <span className="list-item-title">
+                                {this.props.idea.link ? <a href={this.props.idea.link}>{this.props.idea.name}</a> : <span>{this.props.idea.name}</span>}
+                            </span>
+                            {this.props.idea.description ? " - " : ""}
+                            <small>{this.props.idea.description}</small>
+                            <div className="list-actionBox">
+                                <MarkAsBoughtModalContainer idea={this.props.idea} owner={this.props.listOwner} bought={this.bought} />
+                            </div>
+                        </div>
                     </td>
                 </tr>
             );

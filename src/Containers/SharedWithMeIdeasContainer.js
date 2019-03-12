@@ -51,14 +51,7 @@ export default class SharedWithMeIdeasContainer extends Component {
                         </Card.Header>
                         <Card.Body>
                             <div className="table-responsive">
-                                <table className="table">
-                                    <thead className=" text-primary">
-                                        <tr>
-                                            <th>Nom</th>
-                                            <th>Description</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </thead>
+                                <table className="table item-table">
                                     <tbody>
                                         {this.state.ideas.map(idea => (
                                             <SharedIdeaLineView idea={idea} key={idea.rowid} listOwner={this.props.selectedRowId} />

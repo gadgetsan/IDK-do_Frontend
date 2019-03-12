@@ -1,86 +1,79 @@
 import React, { Component } from "react";
-import { Button, FormGroup, FormControl, FormLabel, Container, Row, Col, Card, Jumbotron } from "react-bootstrap";
+import { Navbar, NavDropdown, Nav, Form, FormControl, Button, Container } from "react-bootstrap";
 import helpers from "../helpers";
 import IdeaLineView from "../Views/IdeaLineView";
 import AddIdeaModalContainer from "../Containers/AddIdeaModalContainer";
+import { LinkContainer } from "react-router-bootstrap";
 
-export default class MyIdeasListContainer extends Component {
+export default class ExperimentsPage extends Component {
     constructor(props) {
         super(props);
-
-        this.addIdea = this.addIdea.bind(this);
-        this.deleteIdea = this.deleteIdea.bind(this);
-
-        this.state = {
-            isLoading: false,
-            ideas: []
-        };
     }
 
-    componentDidMount() {
-        this.setState({ isLoading: true });
-        helpers.fetchHelper("experiment", ideasList => {
-            this.setState({
-                ideas: ideasList,
-                isLoading: false
-            });
-        });
+    render() {
+        return (
+            <div className="wrapper ">
+                <div className="sidebar" data-color="green" data-background-color="black" data-image="../../assets/img/sidebar-1.jpg">
+                    <div className="logo">
+                        <a href="http://www.creative-tim.com" className="simple-text logo-normal">
+                            IDK-do <small>(Idée Cadeau)</small>
+                        </a>
+                    </div>
+                    <div className="sidebar-wrapper">
+                        <ul className="nav">
+                            <li className="nav-item  ">
+                                <LinkContainer to="/list">
+                                    <Nav.Link>
+                                        <i className="material-icons">list</i>
+                                        <p>Ma Liste</p>
+                                    </Nav.Link>
+                                </LinkContainer>
+                            </li>
+                            <li className="nav-item  ">
+                                <LinkContainer to="/sharedWithMe">
+                                    <Nav.Link>
+                                        <i className="material-icons">done</i>
+                                        <p>Liste partagées</p>
+                                    </Nav.Link>
+                                </LinkContainer>
+                            </li>
+                            <li className="nav-item active-pro ">
+                                <LinkContainer to="/disconnect">
+                                    <Nav.Link>
+                                        <i className="material-icons">power_settings_new</i>
+                                        <p>Se Déconnecter</p>
+                                    </Nav.Link>
+                                </LinkContainer>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div className="main-panel">
+                    <nav className="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+                        <div className="container-fluid">
+                            <div className="navbar-wrapper">
+                                <a className="navbar-brand" href="#pablo">
+                                    User Profile
+                                </a>
+                            </div>
+                            <button
+                                className="navbar-toggler"
+                                type="button"
+                                data-toggle="collapse"
+                                aria-controls="navigation-index"
+                                aria-expanded="false"
+                                aria-label="Toggle navigation"
+                            >
+                                <span className="sr-only">Toggle navigation</span>
+                                <span className="navbar-toggler-icon icon-bar" />
+                                <span className="navbar-toggler-icon icon-bar" />
+                                <span className="navbar-toggler-icon icon-bar" />
+                            </button>
+                            <div className="collapse navbar-collapse justify-content-end" />
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        );
     }
-
-    addIdea(idea) {
-        var newIdeas = this.state.ideas;
-        //console.dir(idea);
-        newIdeas.push(idea);
-        this.setState({
-            ideas: newIdeas,
-            isLoading: false
-        });
-        //console.log("NEW IDEA!");
-    }
-
-    deleteIdea(id) {
-        var newIdeas = this.state.ideas;
-        var currentIndex = 0;
-        var idToDelete = 0;
-        for (var idea of newIdeas) {
-            if (idea.rowid == id) {
-                idToDelete = currentIndex;
-                break;
-            }
-            currentIndex++;
-        }
-
-        newIdeas.splice(idToDelete, 1);
-        this.setState({
-            ideas: newIdeas,
-            isLoading: false
-        });
-        //console.log("Deleted Idea " + id);
-    }
-
-    render = () => {
-        let user = JSON.parse(localStorage.getItem("user"));
-        if (this.state.isLoading) {
-            return <p>Chargement...</p>;
-        } else {
-            return (
-                <table className="table">
-                    <thead className=" text-primary">
-                        <tr>
-                            <th>Nom</th>
-                            <th>Description</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.state.ideas.map(idea => (
-                            <tr>
-                                <td colspan={3}> {idea.name}</td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            );
-        }
-    };
 }

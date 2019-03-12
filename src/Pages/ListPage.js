@@ -14,7 +14,7 @@ export default class ListPage extends Component {
     render = () => {
         let user = JSON.parse(localStorage.getItem("user"));
         return (
-            <PageContainer>
+            <PageContainer name="Liste d'idées">
                 <Row>
                     <Col lg={9}>
                         <MyIdeasListContainer />

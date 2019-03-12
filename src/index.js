@@ -15,6 +15,7 @@ import { PrivatePage } from "./Pages/PrivatePage";
 import { HashRouter as Router, Route, Link, Redirect } from "react-router-dom";
 
 import "./styles.css";
+
 //console.log("Public URL: " + process.env.PUBLIC_URL);
 
 function App() {

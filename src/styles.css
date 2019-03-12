@@ -11,3 +11,76 @@
 .text-muted {
     color: #6c757d !important;
 }
+.list-line {
+    padding: 0;
+    margin: 0;
+}
+.list-item {
+    padding: 0 0 0 10px !important;
+    height: 25px !important;
+}
+
+.list-item-title {
+    font-weight: bold !important;
+}
+
+.list-line:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.list-actionBox {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    height: 100%;
+    width: 30px;
+    margin: 0;
+    padding: 0;
+    background-image: linear-gradient(to right, transparent, white);
+}
+.list-actionBox a {
+    text-align: right;
+    float: right;
+    visibility: hidden;
+    cursor: pointer;
+}
+.bought {
+    text-decoration: line-through;
+    color: #cccccc !important;
+}
+.bought a {
+    color: #cccccc;
+}
+
+.list-line:hover .list-actionBox {
+    width: 100px;
+    background-image: linear-gradient(to right, transparent, white, white);
+}
+
+.list-line:hover .list-actionBox a {
+    visibility: visible;
+}
+
+.list-item-container {
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+}
+
+.item-table {
+    table-layout: fixed;
+}
+/*
+.sidebar {
+    background-image: url("https://cdn.jsdelivr.net/npm/material-dashboard@2.1.0/assets/img/sidebar-2.jpg") !important;
+    background-size: cover !important;
+    background-color: #f5f5f5 !important;
+}
+*/

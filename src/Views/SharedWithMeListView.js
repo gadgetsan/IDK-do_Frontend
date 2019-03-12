@@ -6,8 +6,14 @@ export default function SharedWithMeListView(props) {
         props.selected(props.shared.rowid);
     };
     return (
-        <a className={props.isSelected ? "btn btn-info btn-link" : "btn btn-link"} onClick={selectKeyCallback}>
-            {props.shared.name}({props.shared.email})
-        </a>
+        <tr className="list-line" onClick={selectKeyCallback} style={{ cursor: "pointer" }} title={props.shared.name + " (" + props.shared.email + ")"}>
+            <td className="list-item">
+                <div className="list-item-container">
+                    <span className={props.isSelected ? "list-item-title text-info" : "list-item-title"}>
+                        {props.shared.name} ({props.shared.email})
+                    </span>
+                </div>
+            </td>
+        </tr>
     );
 }

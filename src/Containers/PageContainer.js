@@ -4,31 +4,68 @@ import { LinkContainer } from "react-router-bootstrap";
 
 export default function PageContainer(props) {
     return (
-        <>
-            <Navbar bg="light" expand="lg">
-                <LinkContainer to="/hello">
-                    <Navbar.Brand>
-                        <b>IDK-do</b> <small>(Idée Cadeau)</small>
-                    </Navbar.Brand>
-                </LinkContainer>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="mr-auto">
-                        <LinkContainer to="/list">
-                            <Nav.Link>Ma liste</Nav.Link>
-                        </LinkContainer>
-                        <LinkContainer to="/sharedWithMe">
-                            <Nav.Link>partagées avec moi</Nav.Link>
-                        </LinkContainer>
-                    </Nav>
-                    <Nav pullright="true">
-                        <LinkContainer to="/disconnect">
-                            <Nav.Link>se Déconnecter</Nav.Link>
-                        </LinkContainer>
-                    </Nav>
-                </Navbar.Collapse>
-            </Navbar>
-            <Container>{props.children}</Container>
-        </>
+        <div className="wrapper">
+            <div className="sidebar" data-color="green" data-background-color="black" data-image="../../assets/img/sidebar-1.jpg">
+                <div className="logo">
+                    <a href="http://www.creative-tim.com" className="simple-text logo-normal">
+                        IDK-do <small>(Idée Cadeau)</small>
+                    </a>
+                </div>
+                <div className="sidebar-wrapper">
+                    <ul className="nav">
+                        <li className="nav-item" to="/list" activeClassName="active">
+                            <LinkContainer className="nav-item" to="/list">
+                                <Nav.Link>
+                                    <i className="material-icons">list</i>
+                                    <p>Ma Liste</p>
+                                </Nav.Link>
+                            </LinkContainer>
+                        </li>
+                        <li className="nav-item">
+                            <LinkContainer to="/sharedWithMe">
+                                <Nav.Link>
+                                    <i className="material-icons">done</i>
+                                    <p>Liste partagées</p>
+                                </Nav.Link>
+                            </LinkContainer>
+                        </li>
+                        <li className="nav-item active-pro">
+                            <LinkContainer to="/disconnect">
+                                <Nav.Link>
+                                    <i className="material-icons">power_settings_new</i>
+                                    <p>Se Déconnecter</p>
+                                </Nav.Link>
+                            </LinkContainer>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div className="main-panel">
+                <nav className="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+                    <div className="container-fluid">
+                        <div className="navbar-wrapper">
+                            <a className="navbar-brand">{props.name}</a>
+                        </div>
+                        <button
+                            className="navbar-toggler"
+                            type="button"
+                            data-toggle="collapse"
+                            aria-controls="navigation-index"
+                            aria-expanded="false"
+                            aria-label="Toggle navigation"
+                        >
+                            <span className="sr-only">Toggle navigation</span>
+                            <span className="navbar-toggler-icon icon-bar" />
+                            <span className="navbar-toggler-icon icon-bar" />
+                            <span className="navbar-toggler-icon icon-bar" />
+                        </button>
+                        <div className="collapse navbar-collapse justify-content-end" />
+                    </div>
+                </nav>
+                <div className="content">
+                    <div className="container-fluid">{props.children}</div>
+                </div>
+            </div>
+        </div>
     );
 }

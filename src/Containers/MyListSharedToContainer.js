@@ -69,11 +69,15 @@ export default class MyListSharedToContainer extends Component {
                         <p className="card-category">cette liste est partagée avec les personnes possèdant les courriels suivant</p>
                     </Card.Header>
                     <Card.Body>
-                        <ul>
-                            {this.state.shares.map(share => (
-                                <SharedToElement share={share} key={share.rowid} deleteShare={this.deleteShare} />
-                            ))}
-                        </ul>
+                        <div className="table-responsive">
+                            <table className="table item-table">
+                                <tbody>
+                                    {this.state.shares.map(share => (
+                                        <SharedToElement share={share} key={share.rowid} deleteShare={this.deleteIdea} />
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
                         <ShareListModalContainer addShare={this.addShare} />
                     </Card.Body>
                 </Card>

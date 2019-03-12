@@ -38,14 +38,20 @@ export default class SharedWithMeListContainer extends Component {
                         <p className="card-category">Ces utilisateurs partagent leur liste avec vous</p>
                     </Card.Header>
                     <Card.Body>
-                        {this.state.sharedWithMe.map(shareUser => (
-                            <SharedWithMeListView
-                                key={shareUser.rowid}
-                                shared={shareUser}
-                                selected={this.props.rowSelected}
-                                isSelected={this.props.selectedRowId === shareUser.rowid}
-                            />
-                        ))}
+                        <div className="table-responsive">
+                            <table className="table item-table">
+                                <tbody>
+                                    {this.state.sharedWithMe.map(shareUser => (
+                                        <SharedWithMeListView
+                                            key={shareUser.rowid}
+                                            shared={shareUser}
+                                            selected={this.props.rowSelected}
+                                            isSelected={this.props.selectedRowId === shareUser.rowid}
+                                        />
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
                     </Card.Body>
                 </Card>
             );
