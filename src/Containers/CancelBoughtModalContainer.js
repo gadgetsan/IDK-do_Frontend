@@ -3,7 +3,7 @@ import { Button, FormGroup, FormControl, FormLabel, Container, Row, Col, Card, J
 import helpers from "../helpers";
 import IdeaLineView from "../Views/IdeaLineView";
 
-export default class MarkAsBoughtModalContainer extends Component {
+export default class CancelBoughtModalContainer extends Component {
     constructor(props, context) {
         super(props, context);
 
@@ -28,16 +28,14 @@ export default class MarkAsBoughtModalContainer extends Component {
     }
 
     handleSubmit(event) {
-        let user = JSON.parse(localStorage.getItem("user"));
         event.preventDefault();
         var self = this;
         this.setState({ loading: true });
-        var ideaToMarkAsBought = { rowid: this.props.idea.rowid, owner: this.props.owner, boughtUser: user.rowid, boughtOn: new Date() };
-        helpers.postHelper("boughtItem", ideaToMarkAsBought, result => {
+        var ideaToCancel = { rowid: this.props.idea.rowid, owner: this.props.owner, boughtUser: null, boughtDate: null };
+        helpers.postHelper("cancelBought", ideaToCancel, result => {
             this.setState({ loading: false });
-            this.props.bought(ideaToMarkAsBought);
+            this.props.cancelBought(ideaToCancel);
             this.handleClose();
-            //self.props.deleteIdea(this.props.idea.rowid);
         });
     }
 
@@ -45,17 +43,17 @@ export default class MarkAsBoughtModalContainer extends Component {
         return (
             <>
                 <a title="Marquer cette idée comme achetée" className="text-info" data-original-title="Remove" onClick={this.handleShow}>
-                    <i className="material-icons">done_outline</i>
+                    <i className="material-icons">undo</i>
                     <div className="ripple-container" />
                 </a>
 
                 <Modal show={this.state.show} onHide={this.handleClose}>
                     <Modal.Header closeButton>
-                        <Modal.Title>Marqué comme acheté</Modal.Title>
+                        <Modal.Title>Marqué comme non-acheté</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                         <p>
-                            Êtes-vous certain de vouloir Marqué que vous avez acheter l'idée <b>{this.props.idea.name}</b>
+                            Êtes-vous certain de vouloir marqué l'item <b>{this.props.idea.name}</b> comme non-achetée
                         </p>
                     </Modal.Body>
                     <Modal.Footer>
@@ -63,7 +61,7 @@ export default class MarkAsBoughtModalContainer extends Component {
                             Annuler
                         </Button>
                         <Button type="submit" variant="info" onClick={this.handleSubmit} disabled={this.state.loading}>
-                            Marquer comme acheté
+                            Marquer comme non-acheté
                         </Button>
                     </Modal.Footer>
                 </Modal>

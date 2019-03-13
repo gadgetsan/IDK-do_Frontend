@@ -73,7 +73,7 @@ export default class MyListSharedToContainer extends Component {
                             <table className="table item-table">
                                 <tbody>
                                     {this.state.shares.map(share => (
-                                        <SharedToElement share={share} key={share.rowid} deleteShare={this.deleteIdea} />
+                                        <SharedToElement share={share} key={share.rowid} deleteShare={this.deleteShare} />
                                     ))}
                                 </tbody>
                             </table>

@@ -3,7 +3,7 @@ import { Button, FormGroup, FormControl, FormLabel, Container, Row, Col, Card, J
 import helpers from "../helpers";
 import IdeaLineView from "../Views/IdeaLineView";
 
-export default class ShareListModalContainer extends Component {
+export default class EditIdeaModalContainer extends Component {
     constructor(props, context) {
         super(props, context);
 
@@ -11,11 +11,12 @@ export default class ShareListModalContainer extends Component {
         this.handleClose = this.handleClose.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
-        this.validate = this.validate.bind(this);
 
         this.state = {
             show: false,
-            email: "",
+            name: this.props.idea.name,
+            description: this.props.idea.description,
+            link: this.props.idea.link,
             loading: false
         };
     }
@@ -35,24 +36,19 @@ export default class ShareListModalContainer extends Component {
             [event.target.id]: event.target.value
         });
     }
-    validate() {
-        let user = JSON.parse(localStorage.getItem("user"));
-        return !(!this.state.loading && this.state.email != "" && this.state.email != user.email);
-    }
 
     handleSubmit(event) {
         event.preventDefault();
         var self = this;
         this.setState({ loading: true });
         let user = JSON.parse(localStorage.getItem("user"));
-        var newShare = { rowid: -1, shareEmail: this.state.email };
-        helpers.postHelper("addShare", newShare, result => {
-            var shareToAdd = { rowid: result, toEmail: newShare.shareEmail };
-            self.props.addShare(shareToAdd);
+        var newIdea = { rowid: self.props.idea.rowid, name: this.state.name, description: this.state.description, link: this.state.link, user: user.rowid };
+        console.dir(self.props.idea.rowid);
+        helpers.postHelper("editIdea", newIdea, result => {
+            self.props.editIdea(newIdea);
             self.handleClose();
 
             self.setState({
-                email: "",
                 loading: false
             });
         });
@@ -61,27 +57,35 @@ export default class ShareListModalContainer extends Component {
     render() {
         return (
             <>
-                <Button variant="primary" onClick={this.handleShow} className="btn btn-success pull-right">
-                    Partager
-                </Button>
+                <a title="Modifier cette idée" rel="tooltip" className="text-primary" data-original-title="Edit Task" onClick={this.handleShow}>
+                    <i className="material-icons">edit</i>
+                </a>
 
                 <Modal show={this.state.show} onHide={this.handleClose}>
                     <form onSubmit={this.handleSubmit}>
                         <Modal.Header closeButton>
-                            <Modal.Title>Partager cette liste avec une nouvelle personne</Modal.Title>
+                            <Modal.Title>Modifier cette idée</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
-                            <FormGroup controlId="email" bssize="large">
-                                <FormLabel>Courriel</FormLabel>
-                                <FormControl autoFocus type="text" value={this.state.email} onChange={this.handleChange} />
+                            <FormGroup controlId="name" bssize="large">
+                                <FormLabel>Nom</FormLabel>
+                                <FormControl autoFocus type="text" value={this.state.name} onChange={this.handleChange} />
+                            </FormGroup>
+                            <FormGroup controlId="description" bssize="large">
+                                <FormLabel>Description</FormLabel>
+                                <FormControl as="textarea" value={this.state.description} onChange={this.handleChange} type="textarea" />
+                            </FormGroup>
+                            <FormGroup controlId="link" bssize="large">
+                                <FormLabel>Lien</FormLabel>
+                                <FormControl value={this.state.link} onChange={this.handleChange} type="textarea" />
                             </FormGroup>
                         </Modal.Body>
                         <Modal.Footer>
                             <Button variant="secondary" onClick={this.handleClose}>
                                 Annuler
                             </Button>
-                            <Button type="submit" variant="success" onClick={this.handleAdd} disabled={this.validate()}>
-                                Ajouter
+                            <Button type="submit" variant="primary" onClick={this.handleAdd} disabled={this.state.loading}>
+                                Enregistrer
                             </Button>
                         </Modal.Footer>
                     </form>

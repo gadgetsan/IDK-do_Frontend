@@ -9,6 +9,7 @@ export default class MyIdeasListContainer extends Component {
         super(props);
 
         this.addIdea = this.addIdea.bind(this);
+        this.editIdea = this.editIdea.bind(this);
         this.deleteIdea = this.deleteIdea.bind(this);
 
         this.state = {
@@ -32,6 +33,27 @@ export default class MyIdeasListContainer extends Component {
         var newIdeas = this.state.ideas;
         //console.dir(idea);
         newIdeas.push(idea);
+        this.setState({
+            ideas: newIdeas,
+            isLoading: false
+        });
+        //console.log("NEW IDEA!");
+    }
+
+    editIdea(editedIdea) {
+        var newIdeas = this.state.ideas;
+        var currentIndex = 0;
+        var idToUpdate = 0;
+        //console.dir(editedIdea);
+
+        for (var idea of newIdeas) {
+            if (idea.rowid == editedIdea.rowid) {
+                idToUpdate = currentIndex;
+                break;
+            }
+            currentIndex++;
+        }
+        newIdeas[idToUpdate] = editedIdea;
         this.setState({
             ideas: newIdeas,
             isLoading: false
@@ -74,7 +96,7 @@ export default class MyIdeasListContainer extends Component {
                             <table className="table item-table">
                                 <tbody>
                                     {this.state.ideas.map(idea => (
-                                        <IdeaLineView idea={idea} key={idea.rowid} deleteIdea={this.deleteIdea} />
+                                        <IdeaLineView idea={idea} key={idea.rowid} deleteIdea={this.deleteIdea} editIdea={this.editIdea} />
                                     ))}
                                 </tbody>
                             </table>
