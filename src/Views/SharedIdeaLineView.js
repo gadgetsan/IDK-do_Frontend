@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import DeleteIdeaModal from "../Containers/DeleteIdeaModal";
 import MarkAsBoughtModalContainer from "../Containers/MarkAsBoughtModalContainer";
 import CancelBoughtModalContainer from "../Containers/CancelBoughtModalContainer";
+import SecretMessagesModal from "../Containers/SecretMessagesModal";
 import UserContainer from "../Containers/UserContainer";
 
 export default class SharedIdeaLineView extends Component {
@@ -82,6 +83,7 @@ export default class SharedIdeaLineView extends Component {
                             <small>{this.props.idea.description}</small>
                             <div className="list-actionBox">
                                 <MarkAsBoughtModalContainer idea={this.props.idea} owner={this.props.listOwner} bought={this.bought} />
+                                <SecretMessagesModal idea={this.props.idea} />
                             </div>
                         </div>
                     </td>
